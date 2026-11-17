@@ -51,6 +51,18 @@ function abrir() {
   };
 }
 
+// Para o carrinho, fecha a conexão e não tenta reconectar
+export function desconectar() {
+  clearTimeout(timerReconexao);
+  if (!ws) return;
+
+  ws.onclose = null;   // fechamento pedido por nós: sem reconexão automática
+  enviar({ fd: 0, td: 0, fe: 0, te: 0 });
+  ws.close();
+  ws = null;
+  aoMudarStatus(false);
+}
+
 // Envia o estado, se a conexão estiver aberta
 export function enviar(estado) {
   if (ws && ws.readyState === WebSocket.OPEN) {

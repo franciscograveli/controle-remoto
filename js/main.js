@@ -6,12 +6,14 @@
 // =============================================================================
 
 import { aoMudar, lerEstado, soltarTudo } from "./estado.js";
-import { conectar, enviar, iniciarReenvio, aoMudarConexao } from "./conexao.js";
+import { conectar, desconectar, enviar, iniciarReenvio, aoMudarConexao } from "./conexao.js";
 import { iniciarBotoes, desenharBotoes } from "./botoes.js";
 import { iniciarTeclado } from "./teclado.js";
 
 const form = document.getElementById("form-conexao");
 const campoIp = document.getElementById("campo-ip");
+const botaoConectar = document.getElementById("botao-conectar");
+let conectado = false;
 const pilula = document.getElementById("status");
 const textoStatus = document.getElementById("status-texto");
 
@@ -22,8 +24,10 @@ aoMudar((estado) => {
 });
 
 // ---- Status da conexão ----
-aoMudarConexao((conectado) => {
+aoMudarConexao((estaConectado) => {
+  conectado = estaConectado;
   textoStatus.textContent = conectado ? "Conectado" : "Desconectado";
+  botaoConectar.textContent = conectado ? "Desconectar" : "Conectar";
   pilula.classList.toggle("conectado", conectado);
 });
 
@@ -33,6 +37,13 @@ campoIp.value = localStorage.getItem("ip") || IP_PADRAO;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // O mesmo botão conecta e desconecta
+  if (conectado) {
+    desconectar();
+    return;
+  }
+
   const ip = campoIp.value.trim();
   localStorage.setItem("ip", ip);
   conectar(ip);
