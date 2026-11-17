@@ -31,6 +31,47 @@
       </div>
     </header>
 
+    <!-- Mapa: simulação do caminho do carrinho (não usa dados reais) -->
+    <section class="mapa-bloco">
+      <div class="mapa" role="img" aria-label="Visão do carrinho com o caminho percorrido">
+        <span class="bussola">N</span>
+
+        <div class="mundo">
+          <div class="grade"></div>
+
+          <svg class="rota" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polyline class="rota-borda"></polyline>
+            <polyline class="rota-linha"></polyline>
+            <polyline class="rota-tracejado"></polyline>
+          </svg>
+
+          <!-- Carrinho visto de cima (a frente aponta para cima) -->
+          <div id="carro" class="carro">
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <g fill="#2a3440">
+                <rect x="3" y="4.4" width="6.2" height="9" rx="2.4"/>
+                <rect x="30.8" y="4.4" width="6.2" height="9" rx="2.4"/>
+                <rect x="3" y="26.6" width="6.2" height="9" rx="2.4"/>
+                <rect x="30.8" y="26.6" width="6.2" height="9" rx="2.4"/>
+              </g>
+              <rect x="6.8" y="6.4" width="26.4" height="27.2" rx="9" fill="#eef4f9" stroke="#aebfce" stroke-width="1.6"/>
+              <path d="M12.2 15.6 12.8 10.9A4 4 0 0 1 16.2 8h7.6a4 4 0 0 1 3.4 2.9l.7 4.7" fill="#354b63" stroke="#27394d" stroke-width="1" stroke-linejoin="round"/>
+              <rect x="12.9" y="16.4" width="14.2" height="9.6" rx="4" fill="#5c84ad" stroke="#4a6f96" stroke-width="1"/>
+              <circle cx="10.8" cy="9.4" r="1.7" fill="#ffd76a"/>
+              <circle cx="29.2" cy="9.4" r="1.7" fill="#ffd76a"/>
+              <g fill="#e0524f">
+                <rect x="11.6" y="30.4" width="4" height="2.2" rx="1.1"/>
+                <rect x="24.4" y="30.4" width="4" height="2.2" rx="1.1"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <button id="reiniciar-mapa" class="reiniciar" type="button" aria-label="Reiniciar posição">↺</button>
+      </div>
+      <p class="legenda">Pré-visualização</p>
+    </section>
+
     <!-- Painel: mostra exatamente o que é enviado ao carrinho -->
     <section class="painel" aria-live="polite">
       <div>

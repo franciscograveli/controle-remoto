@@ -9,6 +9,7 @@ import { aoMudar, lerEstado, soltarTudo } from "./estado.js";
 import { conectar, desconectar, enviar, iniciarReenvio, aoMudarConexao } from "./conexao.js";
 import { iniciarBotoes, desenharBotoes } from "./botoes.js";
 import { desenharPainel } from "./painel.js";
+import { iniciarMapa } from "./mapa.js";
 import { iniciarTeclado } from "./teclado.js";
 
 const form = document.getElementById("form-conexao");
@@ -60,6 +61,7 @@ document.addEventListener("visibilitychange", () => {
 
 // ---- Início ----
 desenharPainel(lerEstado());
+iniciarMapa();
 iniciarBotoes();
 iniciarTeclado();
 iniciarReenvio(lerEstado);
