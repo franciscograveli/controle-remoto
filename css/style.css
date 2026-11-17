@@ -1,0 +1,55 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #1b1b1f;
+  color: #eee;
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+}
+
+/* ---- Conexão ---- */
+#form-conexao {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#campo-ip { padding: 8px; width: 220px; }
+
+#status { font-weight: bold; }
+#status.conectado    { color: #4caf50; }
+#status.desconectado { color: #e57373; }
+
+/* ---- Botões de controle ---- */
+/* Cruz de direções: cima no topo, esquerda e direita no meio, baixo embaixo */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+[data-direcao="cima"]  { grid-column: 1 / 3; justify-self: center; }
+[data-direcao="baixo"] { grid-column: 1 / 3; justify-self: center; }
+
+[data-direcao] {
+  width: 120px;
+  height: 120px;
+  font-size: 2.5rem;
+  border: none;
+  border-radius: 16px;
+  background: #3a3a44;
+  color: #eee;
+
+  /* evita zoom/seleção ao segurar o botão no toque */
+  touch-action: none;
+  user-select: none;
+}
+
+/* Botão pressionado (por mouse, toque ou teclado) */
+[data-direcao].ativo { background: #4caf50; }
+
+.dica { margin-top: 32px; color: #999; font-size: 0.9rem; }

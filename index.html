@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle do Carrinho</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Conexão: IP do carrinho (aparece no Serial dele) e status -->
+  <form id="form-conexao">
+    <input id="campo-ip" placeholder="IP do carrinho, ex: 172.20.10.6" autocomplete="off">
+    <button type="submit">Conectar</button>
+    <span id="status" class="desconectado">Desconectado</span>
+  </form>
+
+  <!-- Controle: 4 direções (cada uma liga duas rodas, veja js/direcoes.js) -->
+  <main>
+    <button data-direcao="cima">▲</button>
+    <button data-direcao="esquerda">◀</button>
+    <button data-direcao="direita">▶</button>
+    <button data-direcao="baixo">▼</button>
+  </main>
+
+  <p class="dica">Teclado: use as setas ↑ ↓ ← → (pode combinar duas para fazer curva).</p>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
