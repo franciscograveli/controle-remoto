@@ -5,13 +5,16 @@
 // Fica pressionado enquanto você segura e solta ao soltar.
 // =============================================================================
 
-import { pressionar, soltar } from "./estado.js";
+import { pressionar, soltar, soltarTudo } from "./estado.js";
 import { DIRECOES } from "./direcoes.js";
 
 const botoes = document.querySelectorAll("[data-direcao]");
 
 export function iniciarBotoes() {
   botoes.forEach(configurarBotao);
+
+  // PARAR: solta tudo de uma vez
+  document.getElementById("parar").addEventListener("click", soltarTudo);
 }
 
 function configurarBotao(botao) {

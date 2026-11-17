@@ -180,11 +180,12 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 9px;
   border: 1px solid var(--borda);
   border-radius: 18px;
   background: linear-gradient(145deg, #ffffff, #f5f8fb);
   color: #41546a;
-  font-size: 22px;
+  font-size: 13px;
   font-weight: 600;
   box-shadow: 0 5px 12px rgba(56, 76, 99, 0.07), inset 0 1px 0 white;
   cursor: pointer;
@@ -207,6 +208,91 @@ h1 {
   transform: translateY(2px) scale(0.99);
 }
 
+/* Ícone: uma seta que o CSS gira para cada direção */
+.icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(198, 211, 224, 0.75);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.icone svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+[data-direcao="esquerda"] svg { transform: rotate(-90deg); }
+[data-direcao="direita"] svg  { transform: rotate(90deg); }
+[data-direcao="baixo"] svg    { transform: rotate(180deg); }
+
+/* ---- Botão PARAR: redondo, no centro da cruz ---- */
+#parar {
+  grid-column: 2;
+  grid-row: 2;
+  place-self: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 82px;
+  height: 82px;
+  border: 1px solid #d56c66;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e9847e, #d96761);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  box-shadow: 0 8px 18px rgba(199, 78, 71, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 120ms ease, box-shadow 160ms ease;
+}
+
+/* anel fino em volta do botão */
+#parar::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(213, 108, 102, 0.17);
+  border-radius: 50%;
+}
+
+#parar:hover { box-shadow: 0 10px 22px rgba(199, 78, 71, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.34); }
+
+#parar:active {
+  box-shadow: inset 0 3px 7px rgba(119, 35, 31, 0.2), 0 2px 6px rgba(199, 78, 71, 0.22);
+  transform: translateY(2px) scale(0.97);
+}
+
+.parar-simbolo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 7px;
+}
+
+.parar-simbolo span {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: white;
+}
+
 .rodape {
   margin-top: 28px;
   padding-top: 20px;
@@ -220,6 +306,9 @@ h1 {
 @media (max-width: 540px) {
   .controle { padding: 23px 18px 20px; border-radius: 25px; }
   .direcoes { grid-template-rows: repeat(3, 82px); gap: 9px; }
+  [data-direcao] { flex-direction: column; gap: 4px; font-size: 11px; }
+  .icone { border: 0; background: transparent; }
+  #parar { width: 76px; height: 76px; }
   .conexao { align-items: stretch; width: 100%; }
   #form-conexao { width: 100%; }
 }

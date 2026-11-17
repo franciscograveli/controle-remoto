@@ -32,14 +32,32 @@
     </header>
 
     <!-- Controle: 4 direções (cada uma liga duas rodas, veja js/direcoes.js) -->
+    <!-- A seta é a mesma nos quatro; o CSS só gira o ícone -->
     <section class="direcoes">
-      <button data-direcao="cima">▲</button>
-      <button data-direcao="esquerda">◀</button>
-      <button data-direcao="direita">▶</button>
-      <button data-direcao="baixo">▼</button>
+      <button data-direcao="cima">
+        <span class="icone"><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0L6.5 10.5M12 5l5.5 5.5"/></svg></span>
+        <span>Acelerar</span>
+      </button>
+      <button data-direcao="esquerda">
+        <span class="icone"><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0L6.5 10.5M12 5l5.5 5.5"/></svg></span>
+        <span>Esquerda</span>
+      </button>
+      <button data-direcao="direita">
+        <span class="icone"><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0L6.5 10.5M12 5l5.5 5.5"/></svg></span>
+        <span>Direita</span>
+      </button>
+      <button data-direcao="baixo">
+        <span class="icone"><svg viewBox="0 0 24 24"><path d="M12 19V5m0 0L6.5 10.5M12 5l5.5 5.5"/></svg></span>
+        <span>Ré</span>
+      </button>
+
+      <button id="parar" type="button">
+        <span class="parar-simbolo"><span></span></span>
+        <span>PARAR</span>
+      </button>
     </section>
 
-    <footer class="rodape">Também funciona com as setas do teclado</footer>
+    <footer class="rodape">Setas do teclado para mover · Espaço para parar</footer>
   </div>
 
   <script type="module" src="js/main.js"></script>
