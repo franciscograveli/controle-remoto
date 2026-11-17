@@ -37,6 +37,7 @@ button { -webkit-tap-highlight-color: transparent; }
 
 /* ---- Cartão ---- */
 .controle {
+  container-type: inline-size;   /* permite ajustar o topo pela largura do cartão */
   width: 100%;
   max-width: 590px;
   padding: 30px;
@@ -511,12 +512,19 @@ h1 {
 }
 
 /* ---- Responsivo ---- */
+
+/* Cartão estreito: o topo empilha. Título em cima e, embaixo, status + IP na
+   mesma linha (só quebram se faltar espaço de verdade). */
+@container (max-width: 500px) {
+  .topo { flex-direction: column; align-items: stretch; gap: 16px; }
+  .conexao { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; }
+  #form-conexao { flex: 1 1 200px; width: auto; }
+}
+
 @media (max-width: 540px) {
   .controle { padding: 23px 18px 20px; border-radius: 25px; }
   .direcoes { grid-template-rows: repeat(3, 82px); gap: 9px; }
   [data-direcao] { flex-direction: column; gap: 4px; font-size: 11px; }
   .icone { border: 0; background: transparent; }
   #parar { width: 76px; height: 76px; }
-  .conexao { align-items: stretch; width: 100%; }
-  #form-conexao { width: 100%; }
 }
