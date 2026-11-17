@@ -26,8 +26,9 @@ aoMudarConexao((conectado) => {
   textoStatus.className = conectado ? "conectado" : "desconectado";
 });
 
-// ---- Campo de IP: lembra o último usado ----
-campoIp.value = localStorage.getItem("ip") || "";
+// ---- Campo de IP: começa com o IP padrão e lembra o último usado ----
+const IP_PADRAO = "172.20.10.6";
+campoIp.value = localStorage.getItem("ip") || IP_PADRAO;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
