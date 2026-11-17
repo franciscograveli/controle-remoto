@@ -6,7 +6,7 @@
 // e o resultado é uma curva. Ex: ↑ + ← = só a roda direita anda para frente.
 // =============================================================================
 
-import { pressionar, soltar } from "./estado.js";
+import { pressionar, soltar, soltarTudo } from "./estado.js";
 import { DIRECOES } from "./direcoes.js";
 
 const TECLAS = {
@@ -18,6 +18,13 @@ const TECLAS = {
 
 export function iniciarTeclado() {
   window.addEventListener("keydown", (e) => {
+    // Espaço = PARAR (solta tudo)
+    if (e.key === " " && e.target.tagName !== "INPUT") {
+      e.preventDefault();
+      soltarTudo();
+      return;
+    }
+
     if (!deveTratar(e)) return;
     e.preventDefault();   // impede a página de rolar
     pressionar("tecla-" + e.key, DIRECOES[TECLAS[e.key]]);

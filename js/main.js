@@ -37,6 +37,7 @@ campoIp.value = localStorage.getItem("ip") || IP_PADRAO;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  botaoConectar.blur();   // o Espaço (PARAR) não deve acionar este botão sem querer
 
   // O mesmo botão conecta e desconecta
   if (conectado) {
