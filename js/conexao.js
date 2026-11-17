@@ -18,6 +18,12 @@ let ip = "";
 let timerReconexao = null;
 let aoMudarStatus = () => {};
 
+// Só uma aba pode controlar o carrinho. Quando uma aba conecta, ela avisa as
+// outras, que desconectam e param de tentar reconectar. Sem isso, duas abas
+// mandariam comandos diferentes ao mesmo tempo e o carrinho travaria.
+const canal = new BroadcastChannel("controle-carrinho");
+canal.onmessage = () => desconectar();
+
 export function aoMudarConexao(funcao) {
   aoMudarStatus = funcao;
 }
@@ -26,6 +32,7 @@ export function aoMudarConexao(funcao) {
 export function conectar(novoIp) {
   ip = novoIp;
   clearTimeout(timerReconexao);
+  canal.postMessage("assumi");   // as outras abas se desconectam
 
   if (ws) {
     ws.onclose = null;   // evita que o fechamento antigo agende outra reconexão
