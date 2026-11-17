@@ -31,6 +31,27 @@
       </div>
     </header>
 
+    <!-- Painel: mostra exatamente o que é enviado ao carrinho -->
+    <section class="painel" aria-live="polite">
+      <div>
+        <p class="rotulo">Estado atual</p>
+        <p class="estado"><span id="marcador" class="marcador"></span><span id="estado-texto">Parado</span></p>
+      </div>
+
+      <div class="divisor"></div>
+
+      <div>
+        <p class="rotulo">Rodas</p>
+        <div class="rodas">
+          <span></span><span>Esq</span><span>Dir</span>
+          <span>Frente</span><i data-roda="fe"></i><i data-roda="fd"></i>
+          <span>Trás</span><i data-roda="te"></i><i data-roda="td"></i>
+        </div>
+      </div>
+    </section>
+
+    <p class="mensagem">Enviando: <code id="json">{}</code></p>
+
     <!-- Controle: 4 direções (cada uma liga duas rodas, veja js/direcoes.js) -->
     <!-- A seta é a mesma nos quatro; o CSS só gira o ícone -->
     <section class="direcoes">

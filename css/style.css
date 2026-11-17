@@ -163,6 +163,101 @@ h1 {
 
 #botao-conectar:hover { border-color: #b8c8d8; color: var(--azul-escuro); }
 
+/* ---- Painel de estado ---- */
+.painel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 19px 22px;
+  border: 1px solid rgba(217, 225, 233, 0.85);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(249, 251, 253, 0.96), rgba(244, 247, 250, 0.88));
+  box-shadow: inset 0 1px 0 white;
+}
+
+.rotulo {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--texto-fraco);
+}
+
+.estado {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Vermelho = parado, azul = em movimento */
+.marcador {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e27d77;
+  box-shadow: 0 0 0 4px rgba(226, 125, 119, 0.1);
+}
+
+.marcador.movendo {
+  background: var(--azul);
+  box-shadow: 0 0 0 4px rgba(111, 143, 181, 0.12);
+}
+
+.divisor { width: 1px; height: 44px; background: rgba(226, 232, 240, 0.8); }
+
+/* Tabelinha das rodas: bolinha azul = ligada */
+.rodas {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-items: center;
+  gap: 4px 8px;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-fraco);
+}
+
+.rodas span:nth-child(4), .rodas span:nth-child(7) { justify-self: end; }
+
+.rodas i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.rodas i.ligada {
+  background: var(--azul);
+  box-shadow: 0 0 0 3px rgba(111, 143, 181, 0.18);
+}
+
+/* Mensagem JSON enviada, em letras de máquina */
+.mensagem {
+  margin: 12px 0 28px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--texto-fraco);
+}
+
+.mensagem code {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
 /* ---- Botões de direção ---- */
 .direcoes {
   display: grid;

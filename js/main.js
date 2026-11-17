@@ -8,6 +8,7 @@
 import { aoMudar, lerEstado, soltarTudo } from "./estado.js";
 import { conectar, desconectar, enviar, iniciarReenvio, aoMudarConexao } from "./conexao.js";
 import { iniciarBotoes, desenharBotoes } from "./botoes.js";
+import { desenharPainel } from "./painel.js";
 import { iniciarTeclado } from "./teclado.js";
 
 const form = document.getElementById("form-conexao");
@@ -20,6 +21,7 @@ const textoStatus = document.getElementById("status-texto");
 // ---- Quando o estado muda: atualiza a tela e avisa o carrinho na hora ----
 aoMudar((estado) => {
   desenharBotoes(estado);
+  desenharPainel(estado);
   enviar(estado);
 });
 
@@ -57,6 +59,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
 // ---- Início ----
+desenharPainel(lerEstado());
 iniciarBotoes();
 iniciarTeclado();
 iniciarReenvio(lerEstado);
