@@ -12,7 +12,8 @@ import { iniciarTeclado } from "./teclado.js";
 
 const form = document.getElementById("form-conexao");
 const campoIp = document.getElementById("campo-ip");
-const textoStatus = document.getElementById("status");
+const pilula = document.getElementById("status");
+const textoStatus = document.getElementById("status-texto");
 
 // ---- Quando o estado muda: atualiza a tela e avisa o carrinho na hora ----
 aoMudar((estado) => {
@@ -23,7 +24,7 @@ aoMudar((estado) => {
 // ---- Status da conexão ----
 aoMudarConexao((conectado) => {
   textoStatus.textContent = conectado ? "Conectado" : "Desconectado";
-  textoStatus.className = conectado ? "conectado" : "desconectado";
+  pilula.classList.toggle("conectado", conectado);
 });
 
 // ---- Campo de IP: começa com o IP padrão e lembra o último usado ----

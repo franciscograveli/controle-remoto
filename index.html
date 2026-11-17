@@ -8,22 +8,39 @@
 </head>
 <body>
 
-  <!-- Conexão: IP do carrinho (aparece no Serial dele) e status -->
-  <form id="form-conexao">
-    <input id="campo-ip" placeholder="IP do carrinho" autocomplete="off">
-    <button type="submit">Conectar</button>
-    <span id="status" class="desconectado">Desconectado</span>
-  </form>
+  <div class="controle">
 
-  <!-- Controle: 4 direções (cada uma liga duas rodas, veja js/direcoes.js) -->
-  <main>
-    <button data-direcao="cima">▲</button>
-    <button data-direcao="esquerda">◀</button>
-    <button data-direcao="direita">▶</button>
-    <button data-direcao="baixo">▼</button>
-  </main>
+    <!-- Topo: título, status da conexão e IP do carrinho -->
+    <header class="topo">
+      <div>
+        <p class="sobretitulo">Carrinho ESP32</p>
+        <h1>Controle do carrinho</h1>
+        <p class="subtitulo">Mantenha pressionado para mover</p>
+      </div>
 
-  <p class="dica">Teclado: use as setas ↑ ↓ ← → (pode combinar duas para fazer curva).</p>
+      <div class="conexao">
+        <div id="status" class="pilula" role="status">
+          <span class="ponto"></span>
+          <span id="status-texto">Desconectado</span>
+        </div>
+
+        <form id="form-conexao">
+          <input id="campo-ip" placeholder="IP do carrinho" autocomplete="off" spellcheck="false" aria-label="Endereço IP do carrinho">
+          <button id="botao-conectar" type="submit">Conectar</button>
+        </form>
+      </div>
+    </header>
+
+    <!-- Controle: 4 direções (cada uma liga duas rodas, veja js/direcoes.js) -->
+    <section class="direcoes">
+      <button data-direcao="cima">▲</button>
+      <button data-direcao="esquerda">◀</button>
+      <button data-direcao="direita">▶</button>
+      <button data-direcao="baixo">▼</button>
+    </section>
+
+    <footer class="rodape">Também funciona com as setas do teclado</footer>
+  </div>
 
   <script type="module" src="js/main.js"></script>
 </body>
